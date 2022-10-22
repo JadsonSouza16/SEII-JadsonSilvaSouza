@@ -1,0 +1,30 @@
+As 4 etapas do processo de compilação:
+
+- Pré-processamento
+O pré-processador executa as chamadas diretivas de pré-processamento. Estas diretivas são feitas antes de iniciar o processo de compilação e são embutidas no código fonte do programa. Normalmente as diretivas incluem outros arquivo ao fonte, e/ou fazem determinadas modificações no texto do mesmo.
+
+- Compilação
+É feita a verificação da sintaxe e tradução do código. Se ocorrer algum erro durante o processo de compilação, deve-se voltar ao código fonte , fazer a correção do erro e compilar novamente. Se não ocorrer nenhum erro de compilação será gerado o código objeto. Este nada mais é do que uma tradução do código fonte para uma linguagem mais próxima da máquina. O arquivo de código objeto possui a extensão .obj.
+
+- Montagem
+O código de máquina(Assembly) é convertido em código de objeto para ser interpretado pelo processador.
+
+- Vinculação/ligação
+Os arquivos binários da etapa de Montagem irão gerar o executável autônomo que será distribuído para os usuários.
+
+
+
+Funções dos parâmetros extras do gcc:
+
+-static: copiar funções externas das biblitecas do código para o executável sem utilizar as bibliotecas de forma compartilhada.
+
+-g: incluir informações padrões de debugging no binário do executável.
+
+-pedantic: emitir os avisos requeridos pelo padrão ANSI/ISO.
+
+-Wall: emitir todos os avisos do gcc. Avisos epecíficos podem ser emitidos usando -W{Aviso}.
+
+-Os: otimizar o executável para tamanho. Inclui todas as otimização do comando -O2 que não aumentam o tamanho do arquivo e mais
+algumas que diminuem o tamanho do executável.
+
+-O3: otimizar o executável para performance. Inclui todas as otimizações do comando -O2 e mais algumas. 
