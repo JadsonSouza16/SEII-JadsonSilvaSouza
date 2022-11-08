@@ -1,0 +1,32 @@
+# --- Importando os modulos necessarios ---
+import socket
+
+HEADER = 64
+PORT = 5050 #porta de acesso
+FORMAT = 'utf-8' #formato para codificacao
+DISCONNECT_MESSAGE = "!DISCONNECT"
+SERVER = "192.168.1.26" #IP do servidor 
+ADDR = (SERVER, PORT)  #Address do servidor
+
+# cliente
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(ADDR) #atribuindo as características do client (server, PORT)
+
+#gerenciamento de mensagens 
+def send(msg):
+    message = msg.encode(FORMAT)
+    msg_length = len(message)
+    send_length = str(msg_length).encode(FORMAT)
+    send_length += b' ' * (HEADER - len(send_length))
+    client.send(send_length)
+    client.send(message)
+    print(client.recv(2048).decode(FORMAT))
+
+# Mensagens Enviadas:
+send("Hello World!")
+input()
+send("Hello Everyone!")
+input()
+send("Hello Tim!")
+
+send(DISCONNECT_MESSAGE)
